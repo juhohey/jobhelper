@@ -2,6 +2,10 @@
     <div class="profile">
        <div class="profile-container">
           <img class="profile-img" src="//placehold.it/275x275" >
+           <md-field>
+               <label>Initial Value</label>
+               <md-input v-model="initial"></md-input>
+           </md-field>
       </div>
     </div>
 </template>

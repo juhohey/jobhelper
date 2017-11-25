@@ -1,5 +1,11 @@
 <template>
-    <div class="profile-home">
+    <div class="profile-hobbies">
+        <md-content class="md-primary">Asperational Image</md-content>
+
+        <md-field>
+            <label>Initial Value</label>
+            <md-input v-model="job"></md-input>
+        </md-field>
     </div>
 </template>
 
@@ -8,13 +14,24 @@
         name: 'ProfileHobbies',
         data () {
             return {
-                msg: 'Welcome to Your Vue.js App'
+                job: 'What would you like to be?'
             }
         }
     }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style >
+<style  scoped>
+    .profile-hobbies {
+        display: flex;
+    }
+    .md-content {
+        width: 200px;
+        height: 200px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: cornflowerblue;
+    }
 
 </style>

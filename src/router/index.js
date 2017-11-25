@@ -21,12 +21,12 @@ export default new Router({
             component: ProfileHome
         },
         {
-            path: 'profile/subjects',
+            path: '/profile/subjects',
             name: 'ProfileSubject',
             component: ProfileSubject
         },
         {
-            path: 'profile/hobbies',
+            path: '/profile/hobbies',
             name: 'ProfileHobbies',
             component: ProfileHobbies
         }
