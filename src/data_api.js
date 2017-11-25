@@ -3,7 +3,8 @@
 // ESCO's API
 // API - get 7 essential skills for occupation (this ex. - 'Industrial Designer')
 
-fetch('https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.eu/esco/occupation/ab7bccb2-6f81-4a3d-a0c0-fca5d47d2775', {
+
+/* fetch( {
 	method: 'get'
 }).then(function(response) {
 	return response.json()
@@ -12,7 +13,7 @@ fetch('https://ec.europa.eu/esco/api/resource/occupation?uri=http://data.europa.
 }).catch(function(err) {
 	console.error(err)
 });
-
+ */
 // Duunitori's API
 // API - get total number of jobs in the city
 var city = 'Lappeenranta'
@@ -26,3 +27,49 @@ fetch(`https://duunitori.fi/api/v1/5d3fc27dec93f5e5105e3443edfc421bb57c3603/jobe
 }).catch(function(err) {
 	console.error(err)
 });
+
+function call(url){
+
+  return new Promise((resolve, reject) => {
+
+    fetch(url, {
+      method: 'get'
+    }).then(function (response) {
+      return response.json()
+      }).then(function (response) {
+        resolve(response)
+    }).catch(function (err) {
+      reject(err)
+    });
+  })
+}
+
+
+function getSkillsByOccupation(occupation){
+  const ecURL = `https://ec.europa.eu/esco/api/search/?text=${occupation}&type=occupation&facet=type&limit=1&offset=1`
+
+  call(ecURL)
+    .then(response => {
+      console.log(response);
+    const skillListURI = `https://ec.europa.eu/esco/api/resource/occupation?uri=${response._embedded.results[0].uri}`
+    call(skillListURI)
+      .then(response => {
+        console.log('RES', response._links.hasEssentialSkill.slice(0, 8).map((item) => item.title));
+      })
+  })
+}
+
+function getOccupationByCompetence(skill) {
+  const ecURL = `https://ec.europa.eu/esco/api/search/?text=${skill}&type=skill&facet=type&limit=1&offset=1`
+
+  call(ecURL)
+    .then(response => {
+      console.log(response);
+      const skillListURI = `https://ec.europa.eu/esco/api/resource/skill?uri=${response._embedded.results[0].uri}`
+      call(skillListURI)
+        .then(response => {
+          const occupations = (response._links.isOptionalForOccupation || []) .concat(response._links.isEssentialForOccupation || [])
+          console.log('RES', occupations.map(occupation => occupation.title));
+        })
+    })
+}
