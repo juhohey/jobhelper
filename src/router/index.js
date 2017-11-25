@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import ProfileHome from '@/components/pages/ProfileHome'
+import ProfileBackground from '@/components/pages/ProfileBackground'
 import ProfileSubject from '@/components/pages/ProfileSubject'
 import ProfileHobbies from '@/components/pages/ProfileHobbies'
-
 
 Vue.use(Router)
 
@@ -19,6 +19,11 @@ export default new Router({
             path: '/profile',
             name: 'ProfileHome',
             component: ProfileHome
+        },
+        {
+          path: '/profile/background',
+          name: 'ProfileBackground',
+          component: ProfileBackground
         },
         {
             path: '/profile/subjects',

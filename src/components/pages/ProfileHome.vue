@@ -36,7 +36,7 @@
         },
         methods: {
           navigate(){
-            this.$router.push('/profile/subjects')
+            this.$router.push('/profile/background')
           }
         }
     }

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Layout>
+    <transition name="fade" mode="out-in">
       <router-view/>
+    </transition>
     </Layout>
   </div>
 </template>
@@ -31,5 +33,15 @@ export default {
 }
 #app .md-focused .md-input {
   border-bottom-color: tomato;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .25s ease;
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+#app .md-button-primary {
+  background: #15B2A8;
+  color: white;
 }
 </style>
