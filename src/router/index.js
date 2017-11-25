@@ -5,6 +5,7 @@ import ProfileHome from '@/components/pages/ProfileHome'
 import ProfileBackground from '@/components/pages/ProfileBackground'
 import ProfileSubject from '@/components/pages/ProfileSubject'
 import ProfileHobbies from '@/components/pages/ProfileHobbies'
+import ResultsPage from '@/components/pages/ResultsPage'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
             path: '/profile/hobbies',
             name: 'ProfileHobbies',
             component: ProfileHobbies
+        },
+        {
+            path: '/results',
+            name: 'ResultsPages',
+            component: ResultsPage
         }
     ]
 })
