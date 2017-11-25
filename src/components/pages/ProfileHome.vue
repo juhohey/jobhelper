@@ -1,5 +1,8 @@
 <template>
-    <div class="profile-home">
+    <div class="profile">
+       <div class="profile-container">
+          <img class="profile-img" src="//placehold.it/275x275" >
+      </div>
     </div>
 </template>
 
@@ -15,6 +18,13 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-
+<style scoped>
+ .profile-container {
+    text-align: center;
+    margin: 2rem 0 2rem;
+  }
+  .profile-img {
+    max-width: 100%;
+    border-radius: 50%;
+  }
 </style>
