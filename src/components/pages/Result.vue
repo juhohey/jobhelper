@@ -2,11 +2,14 @@
     <div class="result">
       <h1>Here's the results!</h1>
         <bar-chart :chart-data="chartData"></bar-chart>
+        <result-item :results="listMock"></result-item>
     </div>
 </template>
 
 <script>
-    import { Bar } from 'vue-chartjs';
+    // import { Bar } from 'vue-chartjs';
+    import ResultItem from '@/components/ResultItem';
+
     const fieldsOfInterest = [
         'Agriculture/Food',
         'Animals/Wildlife',
@@ -56,17 +59,64 @@
                   data: [40, 20, 12, 39, 10]
               }
         ]
-    }
+    };
+
+    const listMock = [
+        {
+            title: 'res1',
+            children: [
+                {
+                    title: 'subres1',
+                },
+                {
+                    title: 'subres2',
+                },
+                {
+                    title: 'subres3',
+                },
+            ]
+        },
+        {
+            title: 'res2',
+            children: [
+                {
+                    title: 'subres1',
+                },
+                {
+                    title: 'subres2',
+                },
+                {
+                    title: 'subres3',
+                },
+            ]
+        },
+        {
+            title: 'res3',
+            children: [
+                {
+                    title: 'subres1',
+                },
+                {
+                    title: 'subres2',
+                },
+                {
+                    title: 'subres3',
+                },
+            ]
+        },
+    ];
+
     export default {
         name: 'Result',
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                chartData: chart
+                chartData: chart,
+                listMock,
             };
         },
         components: {
-
+            ResultItem,
         },
     }
 </script>

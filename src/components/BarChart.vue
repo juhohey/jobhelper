@@ -8,7 +8,9 @@ export default {
     props: ['chartData'],
     mounted() {
         const data = this.chartData;
-        const options = {};
+        const options = {
+            // onClick: (e) => console.log(e)
+        };
         console.log('get', data, this.chartData);
         this.renderChart(data, options);
     }
