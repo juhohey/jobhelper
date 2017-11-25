@@ -20,4 +20,12 @@ export default {
 #app {
   min-height: 100vh;
 }
+
+/* child selectors here to override specificity from the framework*/
+#app .md-input {
+  border-bottom: 1px solid #eee;
+}
+#app .md-focused .md-input {
+  border-bottom-color: tomato;
+}
 </style>
