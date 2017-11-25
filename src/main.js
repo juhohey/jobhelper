@@ -8,14 +8,17 @@ import Vue from 'vue'
 import store from './store'
 import App from './App'
 import router from './router'
+import BarChart from '@/components/BarChart';
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
+Vue.component('bar-chart', BarChart);
 
 const initialState = {
   appName: 'JobHelper'
 }
 store(initialState)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
