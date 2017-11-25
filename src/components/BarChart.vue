@@ -1,18 +1,17 @@
 <script>
-import { Bar, HorizontalBar } from 'vue-chartjs';
+import { Bar, HorizontalBar, mixins } from 'vue-chartjs';
 
 export default {
     // extends: Bar,
     extends: HorizontalBar,
+    mixins: [mixins.reactiveProp],
     name: 'BarChart',
     props: ['chartData'],
     mounted() {
-        const data = this.chartData;
         const options = {
             // onClick: (e) => console.log(e)
         };
-        console.log('get', data, this.chartData);
-        this.renderChart(data, options);
+        this.renderChart(this.chartData, options);
     }
 }
 </script>

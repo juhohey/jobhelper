@@ -9,16 +9,16 @@
             </div>
         </md-tab>
         <md-tab id="1" md-label="Occupations" >
-
+           <bar-chart :chart-data="occuData"></bar-chart>
         </md-tab>
         <md-tab id="2" md-label="Posts" >
-          <result-item :results="listMock"></result-item>
+          <result-item :results="occupations"></result-item>
         </md-tab>
         <md-tab id="3" md-label="Settings" >
 
         </md-tab>
         <md-tab id="4" md-label="Disabled" md-disabled>
-          
+
         </md-tab>
       </md-tabs>
     </div>
@@ -79,65 +79,20 @@
         ]
     };
 
-    const listMock = [
-        {
-            title: 'res1',
-            children: [
-                {
-                    title: 'subres1',
-                },
-                {
-                    title: 'subres2',
-                },
-                {
-                    title: 'subres3',
-                },
-            ]
-        },
-        {
-            title: 'res2',
-            children: [
-                {
-                    title: 'subres1',
-                },
-                {
-                    title: 'subres2',
-                },
-                {
-                    title: 'subres3',
-                },
-            ]
-        },
-        {
-            title: 'res3',
-            children: [
-                {
-                    title: 'subres1',
-                },
-                {
-                    title: 'subres2',
-                },
-                {
-                    title: 'subres3',
-                },
-            ]
-        },
-    ];
-
     export default {
         name: 'Result',
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
                 chartData: chart,
-                listMock,
                 bars:[40, 20, 12, 39, 10],
                 isDetails: false,
                 occupation: {
                   name: 'foobar'
                 },
                 occupations: [],
-                tabState: 0
+                tabState: 0,
+                occuData: {},
             };
         },
         methods: {
@@ -145,10 +100,26 @@
            const skill = this.chartData.labels[index];
             getOccupationByCompetence(skill)
               .then(occupations => {
-                  this.tabState = '1'
+                  console.log(occupations);
                   this.occupations = occupations;
+                    const occuData = occupations.map( () => Math.floor(Math.random() * 20) );
+
+                    const occuChart = {
+                        labels: occupations,
+                        datasets: [
+                            {
+                                label: '',
+                                backgroundColor: '#f87979',
+                                data: occuData,
+                            }
+                        ]
+                    };
+
+                    this.occuData = occuChart;
+                    this.tabState = '1'
+
               })
-          
+
           },
           closeDetails(){
 
@@ -188,7 +159,7 @@
 <!--
 
 
-       
+
         <div class="result-overlay">
           <div v-for="(bar, index) in bars"  @click="onClick(index)" class="result-overlay-bar"></div>
         </div>

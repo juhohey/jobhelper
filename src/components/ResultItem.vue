@@ -5,7 +5,7 @@
             <span class="md-list-item-text">{{ result.title }}</span>
 
             <md-list slot="md-expand">
-                <md-list-item v-for="child in result.children" class="md-inset">
+                <md-list-item v-for="child in result.children" :key="child.title" class="md-inset">
                     {{ child.title }}
                 </md-list-item>
             </md-list>
