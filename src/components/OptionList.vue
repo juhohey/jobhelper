@@ -1,7 +1,8 @@
 <template>
     <div class="list-container">
         <md-checkbox v-for="option in options" :key="option.name"
-            value="option.value"
+            v-model="selections"
+            :value="option.name"
             @change="toggle(option)"
         >
             {{ option.name }}
@@ -25,6 +26,7 @@
         data() {
             return {
                 initial: '',
+                selections: []
             };
         },
         methods: {

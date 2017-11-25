@@ -21,7 +21,7 @@
 
           <md-button class="md-raised ">Search</md-button>
         </div>
-      
+
     </div>
 </template>
 
@@ -43,7 +43,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .profile-img {
     border-radius: 50%;
     max-width: 100%
