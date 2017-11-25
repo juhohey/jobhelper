@@ -9,10 +9,12 @@ import store from './store'
 import App from './App'
 import router from './router'
 import BarChart from '@/components/BarChart';
+import OptionList from '@/components/OptionList';
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
 Vue.component('bar-chart', BarChart);
+Vue.component('option-list', OptionList);
 
 const initialState = {
     appName: 'JobHelper',
