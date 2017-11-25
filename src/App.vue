@@ -18,7 +18,11 @@ export default {
 
 <style>
 #app {
-  min-height: 100vh;
+    min-height: 100vh;
+}
+.md-checkbox .md-checkbox-container {
+    border-color: black !important;
+    border-radius: 50% !important;
 }
 
 /* child selectors here to override specificity from the framework*/
