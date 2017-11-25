@@ -1,17 +1,29 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
+    <bar-chart></bar-chart>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    data() {
+        return {
+            msg: 'Welcome to Your Vue.js App'
+        }
+    },
+    beforeCreate() {
+        const chartData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [
+                {
+                    label: 'GitHub Commits',
+                    backgroundColor: '#f87979',
+                    data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+                }
+            ]
+        };
+        console.log('store', window.store);
+        window.store.set('chartData', chartData);
     }
-  }
 }
 </script>
 
