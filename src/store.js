@@ -18,7 +18,7 @@ export default (initialState = {}) => {
 
   window.store.set = (key, value) => {
     assoc(key, value, window.store.values)
-    window.store.listeners[value].forEach(fn => fn(value))
+    if (window.store.listeners[value]) window.store.listeners[value].forEach(fn => fn(value))
   }
   window.store.get = (key) => window.store.values[key]
   window.store.listen = (key, fn) => {
