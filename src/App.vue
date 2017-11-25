@@ -35,9 +35,12 @@ export default {
 .fade-enter, .fade-leave-active {
   opacity: 0
 }
-#app .md-button-primary {
+/* #app .md-button-primary {
   background: #15B2A8;
   color: white;
+} */
+.md-checkbox-container {
+    border-radius: 50% !important;
 }
   #app textarea {
     border: 1px solid #eee;

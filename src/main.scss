@@ -1,7 +1,8 @@
 @import "~vue-material/dist/theme/engine";
 
 @include md-register-theme("default", (
-  primary: md-get-palette-color(blue, A200),
+//   primary: md-get-palette-color(blue, A200),
+  primary: #15B2A8,
   accent: #3fffbe,
   warn: #f0ad4e,
 ));
