@@ -22,11 +22,6 @@ export default {
 #app {
     min-height: 100vh;
 }
-.md-checkbox .md-checkbox-container {
-    border-color: black !important;
-    border-radius: 50% !important;
-}
-
 /* child selectors here to override specificity from the framework*/
 #app .md-input {
   border-bottom: 1px solid #eee;
