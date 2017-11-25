@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="flex-col">
         <md-checkbox v-for="option in options" :key="option.name"
             v-model="selectedOptions"
             value="option"
-            v-on:change="logChange"
+            @change="logChange"
         >
             {{ option.name }}
         </md-checkbox>
@@ -23,4 +23,8 @@
 </script>
 
 <style scoped>
+    .flex-col {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
