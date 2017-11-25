@@ -3,16 +3,12 @@
       <div>
         <md-steppers>
 
-          <md-step id="first">     
-            Foobar
+          <md-step id="first">
+              <school-questions-page></school-questions-page>
           </md-step>
 
           <md-step id="second">
-            
-             <md-field>
-                <label>Initial Value</label>
-                <md-input v-model="msg"></md-input>
-            </md-field>
+              <hobby-questions-page></hobby-questions-page>
           </md-step>
 
           <md-step id="third">
@@ -25,13 +21,20 @@
 </template>
 
 <script>
+    import SchoolQuestionsPage from './SchoolQuestionsPage';
+    import HobbyQuestionsPage from './HobbyQuestionsPage';
+
     export default {
         name: 'ProfileSubject',
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App'
-            }
-        }
+            };
+        },
+        components: {
+            SchoolQuestionsPage,
+            HobbyQuestionsPage,
+        },
     }
 </script>
 
