@@ -15,7 +15,8 @@ Vue.use(VueMaterial)
 Vue.component('bar-chart', BarChart);
 
 const initialState = {
-  appName: 'JobHelper'
+    appName: 'JobHelper',
+    chartData: {},
 }
 store(initialState)
 
