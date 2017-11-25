@@ -1,14 +1,13 @@
 <template>
     <div class="list-container">
         <md-checkbox v-for="option in options" :key="option.name"
-            v-model="selectedOptions"
-            value="option"
-            @change="logChange"
+            value="option.value"
+            @change="toggle(option)"
         >
             {{ option.name }}
         </md-checkbox>
         <div class="other">
-            <md-checkbox @change="logChange">
+            <md-checkbox>
                 Other
             </md-checkbox>
             <md-field>
@@ -22,15 +21,15 @@
 <script>
     export default {
         name: 'OptionsList',
-        props: ['options', 'selectedOptions'],
+        props: ['options'],
         data() {
             return {
                 initial: '',
             };
         },
         methods: {
-            logChange(e) {
-                console.log(this.selectedOptions);
+            toggle(option) {
+                this.$emit('change', option);
             }
         }
     }
