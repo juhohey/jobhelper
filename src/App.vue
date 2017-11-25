@@ -45,4 +45,10 @@ export default {
   #app textarea {
     border: 1px solid #eee;
   }
+  .md-dialog {
+    height: 100%!important;
+    width: 100%!important;
+    max-height: 100%!important;
+    max-width: 100%!important;
+  }
 </style>
