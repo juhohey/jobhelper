@@ -66,7 +66,7 @@
     height: auto;
 
   }
-  #app .profile-question-ask {
+  #app textarea {
     border: 1px solid #eee;
   }
 </style>

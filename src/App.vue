@@ -39,4 +39,7 @@ export default {
   background: #15B2A8;
   color: white;
 }
+  #app textarea {
+    border: 1px solid #eee;
+  }
 </style>

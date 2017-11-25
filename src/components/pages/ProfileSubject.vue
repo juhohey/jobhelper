@@ -9,10 +9,9 @@
                 <hobby-questions-page></hobby-questions-page>
             </md-step>
 
-            <md-step id="third">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias doloribus eveniet quaerat modi cumque quos sed, temporibus nemo eius amet aliquid, illo minus blanditiis tempore, dolores voluptas dolore placeat nulla.</p>
-            </md-step>
+          <md-step id="third">
+              <aspiration-questions-page></aspiration-questions-page>
+          </md-step>
         </md-steppers>
     </div>
 </template>
@@ -20,6 +19,7 @@
 <script>
     import SchoolQuestionsPage from './SchoolQuestionsPage';
     import HobbyQuestionsPage from './HobbyQuestionsPage';
+    import AspirationQuestionsPage from './AspirationQuestionsPage';
 
     export default {
         name: 'ProfileSubject',
@@ -31,6 +31,7 @@
         components: {
             SchoolQuestionsPage,
             HobbyQuestionsPage,
+            AspirationQuestionsPage
         },
     }
 </script>
