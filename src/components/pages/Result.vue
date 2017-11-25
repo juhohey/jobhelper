@@ -7,13 +7,53 @@
 
 <script>
     import { Bar } from 'vue-chartjs';
+    const fieldsOfInterest = [
+        'Agriculture/Food',
+        'Animals/Wildlife',
+        'Arts/Humanities',
+        'Civil Rights',
+       'Community development',
+        'Crime/Law enforcement',
+        'Education',
+        'Employment',
+        'Environment',
+        'Health care',
+        'Health organizations',
+        'Housing/Shelter',
+        'Human services',
+        'International affairs',
+        'International giving',
+        'Medical research',
+        'Mental health/Crisis',
+        'Services',
+        'Mutual aid societies',
+        'Philanthropy/Voluntarism',
+        'Population groups',
+        'Public affairs',
+        'Recreation',
+        'Religion',
+        'Safety/disasters',
+        'Science',
+        'Social sciences',
+        'Unknown/not classified',
+        'Youth development'
+    ];
+
+    function shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
+
     const chart = {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          labels: shuffle(fieldsOfInterest).slice(0,4),
           datasets: [
               {
                   label: 'GitHub Commits',
                   backgroundColor: '#f87979',
-                  data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+                  data: [40, 20, 12, 39, 10]
               }
         ]
     }
