@@ -1,3 +1,4 @@
+import {tail} from 'ramda';
 // API's
 
 // ESCO's API
@@ -80,7 +81,28 @@ function occupationByCompetence(skill) {
                     })
             })
     })
-}
+  }
+  
+  const getDuunitoriUrl = (city, occupation) => `https://duunitori.fi/api/v1/5d3fc27dec93f5e5105e3443edfc421bb57c3603/jobentries?apply=&applyclicks_sum__gte=&applyclicks_sum__lte=&applyclicks_target_met=&area=${city}&company=&company_code=&date_created_after=&date_created_before=&days_left__gte=&days_left__lte=&format=json&pageviews_sum__gte=&pageviews_sum__lte=&pageviews_target_met=&publish_level=&search=&search_also_descr=&source=&tag=&search=${occupation}`;
+  function occupanciesAndProbability(city, occupations){
+    return new Promise((resolve, reject) => {
+
+      console.log('occupationsoccupationsoccupations', occupations)
+      const urls = occupations.map(occupation => occupation.split(' ')[0]).map( occupation => getDuunitoriUrl(city, occupation))
+      const promises = Promise.all(urls.map(call))
+        .then( (proms) => {
+          const target = proms[0].count;
+          const others = tail(proms.map(v => v.count));
+          const probability = others ? parseInt((target / Math.max(...others) * 100).toFixed(2)) : 'Unknown';
+          
+          resolve({
+            occupations: proms[0].results,
+            probability: Number.isNaN(probability) ? 'Unknown' : probability
+          })
+        })
+    })
+  }
 
 export const getSkillsByOccupation = skillsByOccupation
 export const getOccupationByCompetence = occupationByCompetence
+export const getOccupanciesAndProbability = occupanciesAndProbability

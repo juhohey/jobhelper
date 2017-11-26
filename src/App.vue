@@ -51,4 +51,11 @@ export default {
     max-height: 100%!important;
     max-width: 100%!important;
   }
+/**/
+   .md-content{
+   height: auto!important;
+ }
+ .md-title {
+  color: white!important;
+ }
 </style>

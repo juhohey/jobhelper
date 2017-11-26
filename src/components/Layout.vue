@@ -34,9 +34,9 @@
       </md-list>
     </md-drawer>
 
-    <md-content>
+    <div class="content">
       <slot></slot>
-    </md-content>
+    </div>
   </div>
 </template>
 
@@ -73,5 +73,9 @@ import {push} from '../router'
   }
   .router-link-exact-active {
     background: #eee;
+  }
+  .content {
+    padding: 16px;
+    background: white;
   }
 </style>

@@ -46,7 +46,7 @@
 <style scoped>
   .profile-img {
     /* border-radius: 50%; */
-    max-width: 100%
+    max-width: 75%
   }
   .profile-header {
     text-align: center;

@@ -2,7 +2,7 @@
     <div class="result">
       <h1>Here's the results!</h1>
       <md-tabs :md-active-tab="tabState">
-        <md-tab id="0" md-label="Themes" >
+        <md-tab id="0" md-label="Interests" >
            <bar-chart :chart-data="chartData"></bar-chart>
              <div class="result-overlay">
               <div v-for="(bar, index) in bars"  @click="onSelectSkill(bar, index)" class="result-overlay-bar"></div>
@@ -19,6 +19,16 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>
           <result-item :results="occupations"></result-item>
         </md-tab>
+         <md-tab id="3" md-label="Jobs" >
+            <div class="probability">
+             Probability of finding a job {{openings.probability}}
+            </div>
+            <p v-for="job in openings.occupations">
+              <md-icon>star</md-icon>
+              <b class="md-list-item-text">{{job.heading}}</b>
+              <span>{{job.descr}}</span>
+            </p>
+        </md-tab>
       </md-tabs>
     </div>
 </template>
@@ -26,7 +36,7 @@
 <script>
     import { Bar } from 'vue-chartjs';
     import ResultItem from '@/components/ResultItem';
-    import {getOccupationByCompetence, getSkillsByOccupation} from '../../data_api'
+    import {getOccupationByCompetence, getSkillsByOccupation, getOccupanciesAndProbability} from '../../data_api'
     const fieldsOfInterest = [
         'Agriculture/Food',
         'Animals/Wildlife',
@@ -89,9 +99,14 @@
                   name: 'foobar'
                 },
                 occupations: [],
+                occupationsList: [],
                 tabState: 0,
                 occuData: {},
                 selectedOccupation: '',
+                openings: {
+                  list:[],
+                  probability:''
+                }
             };
         },
         methods: {
@@ -101,8 +116,8 @@
               .then(occupationsList => {
                    const occupations =  occupationsList.slice(0,4);
                    this.tabState = '1'
-                   this.occupations = occupations.slice(0,4);
-                    const occuData = this.occupations.map( () => Math.floor(Math.random() * 20) );
+                   this.occupationsList = occupations
+                    const occuData = occupations.map( () => Math.floor(Math.random() * 20) );
                     const occuChart = {
                         labels: occupations,
                         datasets: [
@@ -114,7 +129,7 @@
                         ]
                     };
                     this.occuData = occuChart;
-                   // console.log(occuData)
+                   console.log(this.occupationsList)
 
               })
 
@@ -181,6 +196,12 @@
                             ]
                         },
                     ]
+                    getOccupanciesAndProbability('helsinki', [occupation].concat(this.occupationsList.filter(o => o !== occupation)) )
+                      .then(res => {
+
+                        this.openings = res;
+                        console.log(this.openings)
+                      })
                     // this.occupations = skills.map( s => { return { title: s }; });  // nöyp
                     // console.log('occus', this.occupations);
                     // const occupations = [{ title: 'asdasd' }]
@@ -219,9 +240,12 @@
      }
    }
  }
-    .occu-header {
+  .occu-header {
         font-size: 24px;
     }
+/*  .md-tab{
+   height: 100vh!important;
+ } */
 </style>
 
 
