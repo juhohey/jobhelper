@@ -10,6 +10,9 @@ export default {
     mounted() {
         const options = {
             // onClick: (e) => console.log(e)
+            legend: {
+                display: false,
+            }
         };
         this.renderChart(this.chartData, options);
     }
