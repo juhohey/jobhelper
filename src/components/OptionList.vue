@@ -45,9 +45,11 @@
     .other {
         display: flex;
     }
-    .other input[type="text"] {
-        border: 2px solid;
+    .md-field {
         transform: translateY(-10px);
+    }
+    .other input[type="text"] {
+        border: 2px solid #eee;
         padding: 0 16px;
     }
 </style>

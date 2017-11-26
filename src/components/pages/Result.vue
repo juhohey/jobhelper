@@ -15,7 +15,8 @@
             </div>
         </md-tab>
         <md-tab id="2" md-label="Posts" >
-            <p>{{ selectedOccupation }}</p>
+            <p class="occu-header">{{ selectedOccupation }}</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non explicabo, neque.</p>
           <result-item :results="occupations"></result-item>
         </md-tab>
       </md-tabs>
@@ -218,6 +219,9 @@
      }
    }
  }
+    .occu-header {
+        font-size: 24px;
+    }
 </style>
 
 
