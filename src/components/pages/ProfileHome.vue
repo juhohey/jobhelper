@@ -1,10 +1,10 @@
 <template>
     <div class="profile">
      <div class="profile-container">
-        <img class="profile-img" src="//placehold.it/275x275" >
+        <img class="profile-img" src="../../assets/logo1.jpeg" >
      </div>
         <h2 class="profile-header">
-          Application name!
+          HummingBirb!
         </h2>
         <p class="profile-description">
           Hello, we are here to help you get informed vocal decisions. What can we do for you?

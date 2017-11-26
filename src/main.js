@@ -19,7 +19,7 @@ Vue.component('bar-chart', BarChart);
 Vue.component('option-list', OptionList);
 
 const initialState = {
-    appName: 'JobHelper',
+    appName: 'HummingBird',
     chartData: {},
 }
 store(initialState)
