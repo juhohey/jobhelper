@@ -26,7 +26,7 @@
         <span @click="isSidebarOpen = false">
           <router-link to="/profile">
             <md-list-item @click="isSidebarOpen = true">
-              <md-icon>avatar</md-icon>
+              <md-icon>account_circle</md-icon>
               <span class="md-list-item-text">Profile</span>
             </md-list-item>
           </router-link>
