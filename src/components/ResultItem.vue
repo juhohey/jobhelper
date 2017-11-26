@@ -1,7 +1,7 @@
 <template>
     <md-list>
         <md-list-item md-expand v-for="result in results" :key="result.title">
-            <md-icon>whatshot</md-icon>
+            <!-- <md-icon>whatshot</md-icon> -->
             <span class="md-list-item-text">{{ result.title }}</span>
 
             <md-list slot="md-expand">

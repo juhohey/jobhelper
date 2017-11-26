@@ -11,10 +11,11 @@
         <md-tab id="1" md-label="Occupations" >
            <bar-chart :chart-data="occuData" ></bar-chart>
             <div class="result-overlay">
-              <div v-for="(bar, index) in occuData"  @click="onSelectOccupation(bar, index)" class="result-overlay-bar"></div>
+              <div v-for="(bar, index) in occuData.labels"  @click="onSelectOccupation(bar, index)" class="result-overlay-bar"></div>
             </div>
         </md-tab>
         <md-tab id="2" md-label="Posts" >
+            <p>{{ selectedOccupation }}</p>
           <result-item :results="occupations"></result-item>
         </md-tab>
       </md-tabs>
@@ -89,6 +90,7 @@
                 occupations: [],
                 tabState: 0,
                 occuData: {},
+                selectedOccupation: '',
             };
         },
         methods: {
@@ -114,21 +116,75 @@
                    // console.log(occuData)
 
               })
-          
+
           },
            onSelectOccupation(amount, index){
-           const occupation = this.occuData[index];
-            getSkillsByOccupation(occupation)
-              .then(skills => {
-                  ///setTimeout( ()=>{
-                    this.tabState = '2'
-                    //console.log('goddamit vue', this.tabState)
-                   // this.forceUpdate()
-                  //}, 1000)
-                  //this.$set(this, 'tabState', '2')
-                  //window.setTabState('2')
-                  //console.log(skills)
-              })
+            const occupation = this.occuData.labels[index];
+                this.selectedOccupation = occupation.split(' ').map( w => w.charAt(0).toUpperCase() + w.slice(1) ).join(' ');
+                getSkillsByOccupation(occupation)
+                .then(skills => {
+                    console.log('skillz', skills);
+                    this.tabState = '2';
+                    this.occupations = [
+                        {
+                            title: 'Demand',
+                            children: skills.map( s => { return { title: s }; } )  // just take it, take it and go away
+                        },
+                        {
+                            title: 'Average salary',
+                            children: [
+                                {
+                                    title: 'Billions!!!'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Length of studies',
+                            children: [
+                                {
+                                    title: 'Not that long'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'What to study',
+                            children: [
+                                {
+                                    title: 'What ever this app tells you to'
+                                }
+                            ]
+                        },
+                        {
+                            title: 'Where to study',
+                            children: [
+                                {
+                                    title: 'School, life... go for it'
+                                }
+                            ]
+                        },
+                        {
+                            title: '5 year plan',
+                            children: [
+                                {
+                                    title: 'Go to school'
+                                },
+                                {
+                                    title: 'Graduate'
+                                },
+                                {
+                                    title: '???'
+                                },
+                                {
+                                    title: 'Profit'
+                                },
+                            ]
+                        },
+                    ]
+                    // this.occupations = skills.map( s => { return { title: s }; });  // nöyp
+                    // console.log('occus', this.occupations);
+                    // const occupations = [{ title: 'asdasd' }]
+                    // this.$set(this, 'occupations', occupations);
+                })
 
           },
         },
