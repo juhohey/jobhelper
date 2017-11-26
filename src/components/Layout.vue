@@ -4,6 +4,7 @@
       <md-button class="md-icon-button" @click="isSidebarOpen = true">
         <md-icon>menu</md-icon>
       </md-button>
+      <img class="layout-logo" src="https://dopyoman.github.io/jobhelper/dist/static/img/logo.png" />
       <span class="md-title">{{appName}}</span>
     </md-toolbar>
 
@@ -77,5 +78,8 @@ import {push} from '../router'
   .content {
     padding: 16px;
     background: white;
+  }
+  .layout-logo {
+    width: 35px
   }
 </style>
