@@ -24,9 +24,8 @@
              Probability of finding a job {{openings.probability}}
             </div>
             <p v-for="job in openings.occupations">
-              <md-icon>star</md-icon>
               <b class="md-list-item-text">{{job.heading}}</b>
-              <span>{{job.descr}}</span>
+              <span class="block">{{job.descr}}</span>
             </p>
         </md-tab>
       </md-tabs>
@@ -242,6 +241,9 @@
  }
   .occu-header {
         font-size: 24px;
+    }
+    .block {
+      margin: 1rem 0;
     }
 /*  .md-tab{
    height: 100vh!important;
