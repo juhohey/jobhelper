@@ -2,14 +2,17 @@
     <div class="result">
       <h1>Here's the results!</h1>
       <md-tabs :md-active-tab="tabState">
-        <md-tab id="0" md-label="Themes" >ASDASDf
+        <md-tab id="0" md-label="Themes" >
            <bar-chart :chart-data="chartData"></bar-chart>
              <div class="result-overlay">
               <div v-for="(bar, index) in bars"  @click="onSelectSkill(bar, index)" class="result-overlay-bar"></div>
             </div>
         </md-tab>
         <md-tab id="1" md-label="Occupations" >
-           <bar-chart :chart-data="occuData"></bar-chart>
+           <bar-chart :chart-data="occuData" ></bar-chart>
+            <div class="result-overlay">
+              <div v-for="(bar, index) in occuData"  @click="onSelectOccupation(bar, index)" class="result-overlay-bar"></div>
+            </div>
         </md-tab>
         <md-tab id="2" md-label="Posts" >
           <result-item :results="occupations"></result-item>
@@ -27,7 +30,7 @@
 <script>
     import { Bar } from 'vue-chartjs';
     import ResultItem from '@/components/ResultItem';
-    import {getOccupationByCompetence} from '../../data_api'
+    import {getOccupationByCompetence, getSkillsByOccupation} from '../../data_api'
     const fieldsOfInterest = [
         'Agriculture/Food',
         'Animals/Wildlife',
@@ -85,7 +88,7 @@
             return {
                 msg: 'Welcome to Your Vue.js App',
                 chartData: chart,
-                bars:[40, 20, 12, 39, 10],
+                bars:[40, 20, 12, 39],
                 isDetails: false,
                 occupation: {
                   name: 'foobar'
@@ -100,10 +103,9 @@
            const skill = this.chartData.labels[index];
             getOccupationByCompetence(skill)
               .then(occupations => {
-                  console.log(occupations);
-                  this.occupations = occupations;
+                  this.tabState = '1'
+                   this.occupations = occupations;
                     const occuData = occupations.map( () => Math.floor(Math.random() * 20) );
-
                     const occuChart = {
                         labels: occupations,
                         datasets: [
@@ -114,16 +116,22 @@
                             }
                         ]
                     };
-
                     this.occuData = occuChart;
                     this.tabState = '1'
+                    console.log(occuData)
 
+              })
+          
+          },
+           onSelectOccupation(amount, index){
+           const occupation = this.occuData[index];
+            getSkillsByOccupation(occupation)
+              .then(skills => {
+                  this.tabState = '2'
+                  console.log(skills)
               })
 
           },
-          closeDetails(){
-
-          }
         },
         components: {
           ResultItem
@@ -144,12 +152,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 4rem 0 2rem;
      &-bar{
        height: 100%;
+
+    margin: 1rem 0;
         width: 100%;
-        &:hover {
-          background: rgba(0,0,0,0.7)
-        }
      }
    }
  }
