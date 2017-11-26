@@ -57,7 +57,8 @@ function skillsByOccupation(occupation) {
                 const skillListURI = `https://ec.europa.eu/esco/api/resource/occupation?uri=${response._embedded.results[0].uri}`
                 call(skillListURI)
                     .then(response => {
-                        console.log('RES', response._links.hasEssentialSkill.slice(0, 8).map((item) => item.title));
+                        //console.log('RES', );
+                        resolve(response._links.hasEssentialSkill.slice(0, 8).map((item) => item.title))
                     })
             })
     })
@@ -75,7 +76,6 @@ function occupationByCompetence(skill) {
                 call(skillListURI)
                     .then(response => {
                         const occupations = (response._links.isOptionalForOccupation || []).concat(response._links.isEssentialForOccupation || [])
-                        console.log('RES', );
                         resolve(occupations.map(occupation => occupation.title))
                     })
             })

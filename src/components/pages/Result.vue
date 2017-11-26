@@ -17,12 +17,6 @@
         <md-tab id="2" md-label="Posts" >
           <result-item :results="occupations"></result-item>
         </md-tab>
-        <md-tab id="3" md-label="Settings" >
-
-        </md-tab>
-        <md-tab id="4" md-label="Disabled" md-disabled>
-
-        </md-tab>
       </md-tabs>
     </div>
 </template>
@@ -51,7 +45,6 @@
         'Mental health/Crisis',
         'Services',
         'Mutual aid societies',
-        'Philanthropy/Voluntarism',
         'Population groups',
         'Public affairs',
         'Recreation',
@@ -102,9 +95,10 @@
           onSelectSkill(amount, index){
            const skill = this.chartData.labels[index];
             getOccupationByCompetence(skill)
-              .then(occupations => {
-                  this.tabState = '1'
-                   this.occupations = occupations;
+              .then(occupationsList => {
+                   const occupations =  occupationsList.slice(0,4);
+                   this.tabState = '1'
+                   this.occupations = occupations.slice(0,4);
                     const occuData = occupations.map( () => Math.floor(Math.random() * 20) );
                     const occuChart = {
                         labels: occupations,
@@ -117,8 +111,7 @@
                         ]
                     };
                     this.occuData = occuChart;
-                    this.tabState = '1'
-                    console.log(occuData)
+                   // console.log(occuData)
 
               })
           
@@ -127,8 +120,14 @@
            const occupation = this.occuData[index];
             getSkillsByOccupation(occupation)
               .then(skills => {
-                  this.tabState = '2'
-                  console.log(skills)
+                  ///setTimeout( ()=>{
+                    this.tabState = '2'
+                    //console.log('goddamit vue', this.tabState)
+                   // this.forceUpdate()
+                  //}, 1000)
+                  //this.$set(this, 'tabState', '2')
+                  //window.setTabState('2')
+                  //console.log(skills)
               })
 
           },
@@ -136,8 +135,10 @@
         components: {
           ResultItem
         },
-        mount(){
-          store.listen('occupations', occupations => this.occupations = occupations)
+        mounted(){
+//          store.listen('occupations', occupations => this.occupations = occupations)
+
+          window.setTabState = n => this.tabState = n
         }
     }
 </script>
@@ -152,7 +153,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 4rem 0 2rem;
+   // padding: 4rem 0 2rem;
      &-bar{
        height: 100%;
 
