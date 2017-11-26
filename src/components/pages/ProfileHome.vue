@@ -4,7 +4,7 @@
         <img class="profile-img" src="../../assets/logo1.jpeg" >
      </div>
         <h2 class="profile-header">
-          HummingBirb!
+          HummingBird!
         </h2>
         <p class="profile-description">
           Hello, we are here to help you get informed vocal decisions. What can we do for you?
@@ -45,7 +45,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .profile-img {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     max-width: 100%
   }
   .profile-header {
