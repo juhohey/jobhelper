@@ -81,7 +81,8 @@
               {
                   label: '',
                   backgroundColor: '#f87979',
-                  data: [12, 20, 39, 40].reverse()
+                  data: [12, 20, 39, 40].reverse(),
+                    backgroundColor: '#FBE86F',
               }
         ]
     };
@@ -124,6 +125,7 @@
                                 label: '',
                                 backgroundColor: '#f87979',
                                 data: occuData.sort().reverse(),
+                                backgroundColor: '#FBE86F',
                             }
                         ]
                     };

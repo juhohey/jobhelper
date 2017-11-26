@@ -12,7 +12,7 @@ export default {
             // onClick: (e) => console.log(e)
             legend: {
                 display: false,
-            }
+            },
         };
         this.renderChart(this.chartData, options);
     }
