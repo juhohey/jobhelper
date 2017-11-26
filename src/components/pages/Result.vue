@@ -72,7 +72,7 @@
               {
                   label: '',
                   backgroundColor: '#f87979',
-                  data: [40, 20, 12, 39, 10]
+                  data: [12, 20, 39, 40].reverse()
               }
         ]
     };
@@ -83,7 +83,7 @@
             return {
                 msg: 'Welcome to Your Vue.js App',
                 chartData: chart,
-                bars:[40, 20, 12, 39],
+                bars: [12, 20, 39, 40].reverse(),
                 isDetails: false,
                 occupation: {
                   name: 'foobar'
@@ -102,14 +102,14 @@
                    const occupations =  occupationsList.slice(0,4);
                    this.tabState = '1'
                    this.occupations = occupations.slice(0,4);
-                    const occuData = occupations.map( () => Math.floor(Math.random() * 20) );
+                    const occuData = this.occupations.map( () => Math.floor(Math.random() * 20) );
                     const occuChart = {
                         labels: occupations,
                         datasets: [
                             {
                                 label: '',
                                 backgroundColor: '#f87979',
-                                data: occuData,
+                                data: occuData.sort().reverse(),
                             }
                         ]
                     };
