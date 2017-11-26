@@ -58,4 +58,8 @@ export default {
  .md-title {
   color: white!important;
  }
+    /* Result list parent color */
+    .md-list.md-theme-default .md-list-item-container:not(.md-list-item-default):not([disabled]):hover {
+        background-color: #FBE86F !important;
+    }
 </style>
