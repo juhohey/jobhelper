@@ -26,6 +26,7 @@ export default {
   props: ['onClick'],
   methods: {
     navigate(){
+      window.store.set('user.city', this.city)
       this.$router.push('/profile/subjects')
     }
   }

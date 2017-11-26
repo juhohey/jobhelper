@@ -93,7 +93,7 @@ function occupationByCompetence(skill) {
         .then( (proms) => {
           const target = proms[0].count;
           const others = tail(proms.map(v => v.count));
-          const probability = others ? parseInt((target / Math.max(...others) * 100).toFixed(2)) : 'Unknown';
+          const probability = others ? parseInt((target / Math.max(...others) * 100).toFixed(2)) + '%' : 'Unknown';
           
           resolve({
             occupations: proms[0].results,

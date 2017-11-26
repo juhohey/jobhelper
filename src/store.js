@@ -17,7 +17,7 @@ export default (initialState = {}) => {
   const nofity = 
 
   window.store.set = (key, value) => {
-    assoc(key, value, window.store.values)
+    window.store.values = assoc(key, value, window.store.values)
     if (window.store.listeners[value]) window.store.listeners[value].forEach(fn => fn(value))
   }
   window.store.get = (key) => window.store.values[key]

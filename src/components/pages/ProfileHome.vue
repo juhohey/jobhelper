@@ -3,14 +3,11 @@
      <div class="profile-container">
         <img class="profile-img" src="../../assets/logo1.jpeg" >
      </div>
-        <h2 class="profile-header">
-          HummingBird!
-        </h2>
         <p class="profile-description">
           Hello, we are here to help you get informed vocal decisions. What can we do for you?
         </p>
-        <md-button class="md-raised profile-path" @click="navigate">I seek vocational advice</md-button>
-        <md-button class="md-raised profile-path" @click="navigate">I seek information about a specific vocation</md-button>
+        <md-button class="md-raised md-primary profile-path" @click="navigate">I seek vocational advice</md-button>
+        <md-button class="md-raised md-primary profile-path" @click="navigate">I seek information about a specific vocation</md-button>
 
         <div class="profile-question">
           <label><md-icon>search</md-icon>Ask a free question</label>
@@ -57,6 +54,11 @@
   }
   .profile-question {
     margin-top: 2rem;
+  }
+  .profile-path {
+    width: 100%;
+    text-align: center!important;
+    color: white!important;
   }
   #app .profile-path {
     white-space: normal;

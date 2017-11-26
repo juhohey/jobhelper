@@ -197,7 +197,8 @@
                             ]
                         },
                     ]
-                    getOccupanciesAndProbability('helsinki', [occupation].concat(this.occupationsList.filter(o => o !== occupation)) )
+                    const city = (window.store.get('user.city') || 'helsinki').toLowerCase()
+                    getOccupanciesAndProbability(city, [occupation].concat(this.occupationsList.filter(o => o !== occupation)) )
                       .then(res => {
 
                         this.openings = res;
